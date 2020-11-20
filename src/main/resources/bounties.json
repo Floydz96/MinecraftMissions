@@ -1,0 +1,30 @@
+BlockMiner:
+RECOMPENSAS:
+  - FACIL:
+        - RECOMPENSA1
+        - RECOMPENSA2
+        - RECOMPENSA3
+        - RECOMPENSA4
+  - MEDIO:
+        - RECOMPENSA1
+        - RECOMPENSA2
+  - DIFICIL:
+        - RECOMPENSA1
+        - RECOMPENSA2
+        - RECOMPENSA3
+GRAU DE IMPORTANCIA 1:
+        - MIN: 100
+        - MAX: 1000
+GRAU DE IMPORTANCIA 2:
+        - MIN: 75
+        - MAX: 800
+GRAU DE IMPORTANCIA 3:
+        - MIN: 50
+        - MAX: 300
+  Blocos Permitidos:
+   - Material.CARVAO
+      - GRAU DE IMPORTANCIA: 1
+   - Material.DIAMANTE_MINERIO
+      - GRAU DE IMPORTANCIA: 2
+   - Material.DIAMANTE_BLOCO
+      - GRAU DE IMPORTANCIA: 3

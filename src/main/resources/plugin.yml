@@ -1,0 +1,6 @@
+name: ${project.outputName}
+version: ${project.version}
+main: com.gustgamer29.DreamMissions
+author: Floydz69
+
+

@@ -1,0 +1,19 @@
+[{
+  "Menu" : [{
+    "MainMenu" : [{
+      "title" : "&cMission"
+    }],
+    "CategoryMenu" : [{
+      "title" : "&cSwitch a kind of Mission"
+    }],
+    "MissionDifficult" : [{
+      "title" : "&cSwitch the difficult"
+    }],
+    "GlobalChallenge" : [{
+      "title" : "&cDaily Challenges"
+    }],
+    "ChallengeInfo" : [{
+      "title" : "&c{challenge}"
+    }]
+  }]
+}]

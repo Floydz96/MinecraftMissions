@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.gustgamer29</groupId>
+    <artifactId>DreamMissions</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <!-- Project properties -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <jdk.version>1.8</jdk.version>
+
+        <!-- Output properties -->
+        <project.outputName>DreamMissions</project.outputName>
+        <project.buildNumber>20200427.00</project.buildNumber>
+        <project.description>DreamMissions</project.description>
+        <project.versionCode>${project.version}-b${project.buildNumber}</project.versionCode>
+
+        <!-- BukkitPlugin properties -->
+        <bukkitplugin.name>DreamMissions</bukkitplugin.name>
+        <bukkitplugin.version>${project.versionCode}</bukkitplugin.version>
+        <bukkitplugin.main>${project.groupId}.${project.artifactId}.${bukkitplugin.name}</bukkitplugin.main>
+        <bukkitplugin.authors>Floydz96</bukkitplugin.authors>
+
+        <!-- Change Bukkit Version HERE! -->
+        <bukkit.version>1.8.8-R0.1-SNAPSHOT</bukkit.version>
+    </properties>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>plugin.yml</include>
+                    <include>acf-core_pt.properties</include>
+                    <include>acf-minecraft_pt.properties</include>
+                    <include>npc-locations.json</include>
+                    <include>language.json</include>
+                </includes>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <createDependencyReducedPom>true</createDependencyReducedPom>
+                    <shadedArtifactAttached>true</shadedArtifactAttached>
+                    <finalName>${project.outputName}-${project.version}</finalName>
+                    <outputDirectory>D:\minecraft-server\spigot-1.8.8\plugins\</outputDirectory>
+                    <artifactSet>
+                        <excludes>
+                            <exclude>com.gustgamer29:craftbukkit-mirror</exclude>
+                        </excludes>
+                    </artifactSet>
+                    <relocations>
+                        <relocation>
+                            <pattern>co.aikar</pattern>
+                            <shadedPattern>com.gustgamer29.libs.acf</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>com.gustgamer29:MenuBuilder</pattern>
+                            <shadedPattern>com.gustgamer29.libs.menu_builder</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>net.jitse</pattern>
+                            <shadedPattern>com.gustgamer29.libs.npc</shadedPattern>
+                        </relocation>
+                    </relocations>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <repositories>
+        <!-- SpigotAPI Repo -->
+        <repository>
+            <id>spigotmc-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots</url>
+        </repository>
+
+        <repository>
+            <id>aikar</id>
+            <url>https://repo.aikar.co/content/groups/aikar/</url>
+        </repository>
+
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/groups/public/</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>${bukkit.version}</version>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>junit</artifactId>
+                    <groupId>junit</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>persistence-api</artifactId>
+                    <groupId>javax.persistence</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>guava</artifactId>
+                    <groupId>com.google.guava</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>bungeecord-chat</artifactId>
+                    <groupId>net.md-5</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>gson</artifactId>
+                    <groupId>com.google.code.gson</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!--        <dependency>-->
+        <!--            <groupId>me.lucko</groupId>-->
+        <!--            <artifactId>helper</artifactId>-->
+        <!--            <version>5.6.2</version>-->
+        <!--        </dependency>-->
+
+        <dependency>
+            <groupId>com.gustgamer29</groupId>
+            <artifactId>craftbukkit-mirror-r3</artifactId>
+            <version>1.8-r3</version>
+            <scope>provided</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>com.gustgamer29</groupId>
+            <artifactId>craftbukkit-mirror-r2</artifactId>
+            <version>1.8-r2</version>
+            <scope>provided</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>com.gustgamer29</groupId>
+            <artifactId>craftbukkit-mirror-r1</artifactId>
+            <version>1.8-r1</version>
+            <scope>provided</scope>
+            <optional>true</optional>
+        </dependency>
+
+
+        <!-- ACF command framework -->
+        <dependency>
+            <groupId>co.aikar</groupId>
+            <artifactId>acf-paper</artifactId>
+            <version>0.5.0-SNAPSHOT</version>
+        </dependency>
+
+        <!-- Inventory Manager (GUI HANDLER) -->
+        <dependency>
+            <groupId>com.gustgamer29</groupId>
+            <artifactId>MenuBuilder</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.12</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.6</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>29.0-jre</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+            <version>2.8.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.jitse</groupId>
+            <artifactId>npclib-api</artifactId>
+            <version>2.7-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.jitse</groupId>
+            <artifactId>npclib-nms-v1_8_R3</artifactId>
+            <version>2.7-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.kyori</groupId>
+            <artifactId>text-api</artifactId>
+            <version>3.0.3</version>
+        </dependency>
+    </dependencies>
+</project>

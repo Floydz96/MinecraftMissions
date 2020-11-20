@@ -1,0 +1,88 @@
+[
+  {
+    "Configurations": {
+      "General": {
+        "refresh-time": 86400
+      },
+      "BlockMiner": {
+        "bounties": {
+          "easy": [
+            {
+              "command": "give money {player} 1500",
+              "priority": 3
+            },
+            {
+              "command": "give {player} minecraft:diamond_pickaxe 1",
+              "priority": 2
+            },
+            {
+              "command": "give {player} diamond_pickaxe 1 0 {display:{Name:\"Special Pickaxe\",Lore:[\"Item especial\"]},ench:[{id:32,lvl:5},{id:35,lvl:3},{id:34,lvl:3}]}",
+              "priority": 1
+            }
+          ],
+          "medium": [
+            {
+              "command": "give money {player} 20000",
+              "priority": 3
+            },
+            {
+              "command": "give {player} minecraft:diamond_pickaxe 1",
+              "priority": 3
+            },
+            {
+              "command": "give {player} diamond_pickaxe 1 0 {display:{Name:\"Special Pickaxe\",Lore:[\"Item especial\"]},ench:[{id:32,lvl:5},{id:35,lvl:3},{id:34,lvl:3}]}",
+              "priority": 1
+            }
+          ],
+          "hard": [
+            {
+              "command": "give money {player} 50000",
+              "priority": 3
+            },
+            {
+              "command": "give {player} nether_star 1",
+              "priority": 2
+            },
+            {
+              "command": "kit vip {player}",
+              "priority": 1
+            }
+          ]
+        },
+        "block-occurrence": {
+          "1": {
+            "easy": "20-100",
+            "normal": "40-150",
+            "hard": "70-300"
+          },
+          "2": {
+            "easy": "40-140",
+            "normal": "70-200",
+            "hard": "120-400"
+          },
+          "3": {
+            "easy": "70-180",
+            "normal": "100-300",
+            "hard": "180-600"
+          }
+        },
+        "blocks-whitelist": {
+          "COAL_BLOCK": "2",
+          "COAL_ORE": "3",
+          "STONE": "3",
+          "DIAMOND_ORE": "2",
+          "DIAMOND_BLOCK": "1",
+          "OBSIDIAN": "2",
+          "COBBLESTONE": "3",
+          "DIRT": "3",
+          "GRASS": "3"
+        }
+      },
+      "Fishing": {},
+      "Harvesting": {},
+      "MobKilling": {},
+      "Passive": {},
+      "HITMAN": {}
+    }
+  }
+]
